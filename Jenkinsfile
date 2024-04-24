@@ -19,10 +19,10 @@ pipeline {
 			}
 		}
 		stage('Build Image') {
-			environment { QUAY = credentials('QUAY_USER') }
+			environment { QUAY = credentials('nutdanai_s') }
 			steps {
 				sh '''
-					./mvnw quarkus:add-extension Dextensions="kubernetes,container-image-jib"
+					./mvnw quarkus:add-extension -Dextensions="kubernetes,container-image-jib"
 				'''
 				sh '''
 					./mvnw package -DskipTests \
